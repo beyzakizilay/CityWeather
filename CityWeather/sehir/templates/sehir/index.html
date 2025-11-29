@@ -1,28 +1,7 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <title>Ana Sayfa</title>
-</head>
-<body>
-    <h1>Hoş Geldiniz!</h1>
-
-    {% if user.is_authenticated %}
-        <p>Merhaba, {{ user.username }}!</p>
-        <p><a href="{% url 'favoriler' %}">Favoriler</a></p>
-        <p><a href="{% url 'logout' %}">Çıkış Yap</a></p>
-    {% else %}
-        <p><a href="{% url 'login' %}">Giriş Yap</a></p>
-        <p><a href="{% url 'register' %}">Kayıt Ol</a></p>
-    {% endif %}
-
-    <h2>Şehirler</h2>
-    <ul>
-        {% for sehir in sehirler %}
-            <li><a href="{% url 'sehir_detay' sehir %}">{{ sehir }}</a></li>
-        {% endfor %}
-    </ul>
-
-    <p><a href="{% url 'hakkinda' %}">Hakkında</a></p>
-</body>
-</html>
+<h1>Şehirler</h1>
+<ul>
+    {% for s in sehirler %}
+    <li><a href="{% url 'sehir_detay' s %}">{{ s }}</a></li>
+    {% endfor %}
+</ul>
+<a href="{% url 'logout' %}">Çıkış Yap</a>
