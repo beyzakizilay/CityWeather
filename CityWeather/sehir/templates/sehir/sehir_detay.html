@@ -1,23 +1,101 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-    <title>
-        {% if hava %}
-            {{ hava.name }}
-        {% else %}
-            Şehir Bulunamadı
-        {% endif %}
-    </title>
+    <meta charset="UTF-8">
+    <title>{% if hava %}{{ hava.name }}{% else %}Şehir Bulunamadı{% endif %}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #fbc2eb, #a6c1ee);
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background-color: rgba(0,0,0,0.7);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            margin-left: 20px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .card {
+            background-color: rgba(255,255,255,0.85);
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .temp {
+            font-size: 2em;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .description {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        a.button {
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        a.button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <a href="{% url 'index' %}">Ana Sayfa</a>
+    <header>
+        <h1>City Weather</h1>
+        <a href="{% url 'index' %}">Ana Sayfa</a>
+    </header>
 
-    {% if error %}
-        <p>{{ error }}</p>
-    {% else %}
-        <h1>{{ hava.name }}</h1>
-        <p>Sıcaklık: {{ hava.temp }} °C</p>
-        <p>Durum: {{ hava.description }}</p>
-    {% endif %}
+    <div class="container">
+        {% if hava %}
+            <div class="card">
+                <h1>{{ hava.name }}</h1>
+                <p class="temp">{{ hava.main.temp }} °C</p>
+                <p class="description">{{ hava.weather.0.description }}</p>
+            </div>
+        {% else %}
+            <div class="card">
+                <h1>Şehir Bulunamadı</h1>
+                <a href="{% url 'index' %}" class="button">Ana Sayfaya Dön</a>
+            </div>
+        {% endif %}
+    </div>
 </body>
 </html>
