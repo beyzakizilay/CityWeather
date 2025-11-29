@@ -1,12 +1,27 @@
-<h1>Şehirler</h1>
-{% if user.is_authenticated %}
-    <p>Merhaba {{ user.username }} | <a href="{% url 'logout' %}">Çıkış Yap</a></p>
-{% else %}
-    <a href="{% url 'login' %}">Giriş Yap</a> | <a href="{% url 'register' %}">Kayıt Ol</a>
-{% endif %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Şehirler</title>
+</head>
+<body>
+    <h1>Şehirler</h1>
 
-<ul>
-{% for sehir in sehirler %}
-    <li><a href="{% url 'sehir_detay' sehir %}">{{ sehir }}</a></li>
-{% endfor %}
-</ul>
+    {% if user.is_authenticated %}
+        <p>Hoşgeldin, {{ user.username }}!</p>
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Çıkış Yap</button>
+        </form>
+    {% else %}
+        <a href="{% url 'login' %}">Giriş Yap</a>
+        <a href="{% url 'register' %}">Kayıt Ol</a>
+    {% endif %}
+
+    <ul>
+        <li><a href="{% url 'sehir_detay' 'Izmir' %}">İzmir</a></li>
+        <li><a href="{% url 'sehir_detay' 'Istanbul' %}">İstanbul</a></li>
+        <li><a href="{% url 'sehir_detay' 'Ankara' %}">Ankara</a></li>
+        <!-- diğer şehirler -->
+    </ul>
+</body>
+</html>
