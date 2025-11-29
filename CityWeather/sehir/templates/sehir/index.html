@@ -1,7 +1,7 @@
 <h1>CityWeather</h1>
 <h3>Popüler Şehirler</h3>
 <ul>
-{% for sehir in populer_sehirler %}
+{% for sehir in sehirler %}
     <li><a href="{% url 'sehir_detay' sehir %}">{{ sehir }}</a></li>
 {% endfor %}
 </ul>
