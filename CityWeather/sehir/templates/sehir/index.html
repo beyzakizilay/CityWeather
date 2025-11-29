@@ -18,10 +18,9 @@
     {% endif %}
 
     <ul>
-        <li><a href="{% url 'sehir_detay' 'Izmir' %}">İzmir</a></li>
-        <li><a href="{% url 'sehir_detay' 'Istanbul' %}">İstanbul</a></li>
-        <li><a href="{% url 'sehir_detay' 'Ankara' %}">Ankara</a></li>
-        <!-- diğer şehirler -->
+        {% for sehir in sehirler %}
+            <li><a href="{% url 'sehir_detay' sehir %}">{{ sehir }}</a></li>
+        {% endfor %}
     </ul>
 </body>
 </html>

@@ -1,14 +1,23 @@
-<h2>
-{% if hava %}
-    {{ hava.name }}
-{% else %}
-    Şehir Bulunamadı
-{% endif %}
-</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        {% if hava %}
+            {{ hava.name }}
+        {% else %}
+            Şehir Bulunamadı
+        {% endif %}
+    </title>
+</head>
+<body>
+    <a href="{% url 'index' %}">Ana Sayfa</a>
 
-{% if hava %}
-<p>Sıcaklık: {{ hava.main.temp }}°C</p>
-<p>Durum: {{ hava.weather.0.description }}</p>
-{% endif %}
-
-<p><a href="{% url 'index' %}">Ana Sayfa</a></p>
+    {% if error %}
+        <p>{{ error }}</p>
+    {% else %}
+        <h1>{{ hava.name }}</h1>
+        <p>Sıcaklık: {{ hava.temp }} °C</p>
+        <p>Durum: {{ hava.description }}</p>
+    {% endif %}
+</body>
+</html>
