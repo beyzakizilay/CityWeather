@@ -6,7 +6,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #6dd5fa, #ffffff);
+            background: linear-gradient(to right, #ffecd2, #fcb69f);
             color: #333;
             text-align: center;
             padding: 50px;
@@ -39,8 +39,8 @@
 
     {% if hava %}
         <h1>{{ hava.name }}</h1>
-        <p class="temp">{{ hava.main.temp }} °C</p>
-        <p class="description">{{ hava.weather.0.description }}</p>
+        <p class="temp">{{ hava.temp }} °C</p>
+        <p class="description">{{ hava.description }}</p>
     {% else %}
         <h2>Şehir Bulunamadı</h2>
         <p>Lütfen geçerli bir şehir seçin.</p>
