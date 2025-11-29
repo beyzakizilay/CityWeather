@@ -38,25 +38,27 @@
             background-color: #0056b3;
             text-decoration: none;
         }
-        ul {
-            list-style-type: none;
-            padding: 0;
+        .sehir-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
         }
-        li {
-            font-size: 24px;
-            margin: 10px 0;
+        .sehir-card {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 20px 30px;
+            border-radius: 12px;
+            font-size: 20px;
+            min-width: 120px;
+            transition: transform 0.3s, background-color 0.3s;
         }
-        li a {
+        .sehir-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+        .sehir-card a {
             text-decoration: none;
             color: #fff;
-            background-color: rgba(0,0,0,0.3);
-            padding: 8px 16px;
-            border-radius: 6px;
-            display: inline-block;
-            transition: background-color 0.3s;
-        }
-        li a:hover {
-            background-color: rgba(0,0,0,0.5);
         }
     </style>
 </head>
@@ -77,10 +79,12 @@
         </div>
     </header>
 
-    <ul>
+    <div class="sehir-container">
         {% for sehir in sehirler %}
-            <li><a href="{% url 'sehir_detay' sehir %}">{{ sehir }}</a></li>
+            <div class="sehir-card">
+                <a href="{% url 'sehir_detay' sehir %}">{{ sehir }}</a>
+            </div>
         {% endfor %}
-    </ul>
+    </div>
 </body>
 </html>
