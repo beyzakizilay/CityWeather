@@ -1,0 +1,6 @@
+<h2>{{ hava.name if hava else "Şehir Bulunamadı" }}</h2>
+{% if hava %}
+<p>Sıcaklık: {{ hava.main.temp }}°C</p>
+<p>Durum: {{ hava.weather.0.description }}</p>
+{% endif %}
+<p><a href="{% url 'index' %}">Ana Sayfa</a></p>

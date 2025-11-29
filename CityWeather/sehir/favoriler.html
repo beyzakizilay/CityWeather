@@ -1,0 +1,9 @@
+<h2>Favori Şehirler</h2>
+<ul>
+{% for sehir in favori_sehirler %}
+    <li>{{ sehir }}</li>
+{% empty %}
+    <li>Henüz favori şehir eklenmemiş.</li>
+{% endfor %}
+</ul>
+<p><a href="{% url 'index' %}">Ana Sayfa</a></p>

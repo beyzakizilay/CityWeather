@@ -1,0 +1,8 @@
+<h1>CityWeather</h1>
+<h3>Popüler Şehirler</h3>
+<ul>
+{% for sehir in populer_sehirler %}
+    <li><a href="{% url 'sehir_detay' sehir %}">{{ sehir }}</a></li>
+{% endfor %}
+</ul>
+<p><a href="{% url 'favoriler' %}">Favoriler</a> | <a href="{% url 'hakkinda' %}">Hakkında</a></p>
