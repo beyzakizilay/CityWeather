@@ -83,3 +83,9 @@ def sehir_detay(request, sehir_adi):
 
     return render(request, 'sehir/sehir_detay.html', {'hava': hava})
 
+def index(request):
+    sehirler = [
+        'Izmir', 'Istanbul', 'Ankara', 'Bursa', 'Antalya',
+        'Adana', 'Trabzon', 'Konya', 'Mersin', 'Eskişehir'
+    ]
+    return render(request, 'sehir/index.html', {'sehirler': sehirler})
