@@ -25,12 +25,12 @@ def sehir_detay(request, sehir_adi):
     hava = sehirler.get(sehir_adi)
     if not hava:
         return render(request, 'sehir/sehir_detay.html', {'error': 'Şehir bulunamadı!'})
-
+    
     return render(request, 'sehir/sehir_detay.html', {'hava': hava})
 
 @login_required
 def favoriler(request):
-    favori_sehirler = ['Izmir', 'Ankara']  # Örnek olarak favoriler
+    favori_sehirler = ['Izmir', 'Ankara']  # Örnek favoriler
     return render(request, 'sehir/favoriler.html', {'favori_sehirler': favori_sehirler})
 
 def hakkinda(request):
